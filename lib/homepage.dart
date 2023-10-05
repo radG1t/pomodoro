@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int initialTime = 0;
-  int tl = 0; // time left
+  int tl = 10; // time left
   late Timer timer;
 
   final TextEditingController _tlController = TextEditingController();
