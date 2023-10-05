@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key});
@@ -60,80 +61,96 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextField(
-              controller: _tlController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                hintText: 'Enter Time (in seconds)',
+      backgroundColor: Colors.red.shade700,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          TextField(
+            controller: _tlController,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              hintText: 'Enter Time (in seconds)',
+            ),
+          ),
+          /*     Column(
+            children: [
+              Container(
+                width: 120,
+                height: 120,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.grey,
+                ),
+                child: Center(
+                  child: Text(
+                    tl == 0 ? 'DONE' : tl.toString(),
+                    style: const TextStyle(color: Colors.black, fontSize: 40),
+                  ),
+                ),
               ),
-            ),
-            Column(
-              children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.grey,
-                  ),
-                  child: Center(
-                    child: Text(
-                      tl == 0 ? 'DONE' : tl.toString(),
-                      style: const TextStyle(color: Colors.black, fontSize: 40),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Text('Time to focus!'),
-              ],
-            ),
-            MaterialButton(
-              color: Colors.deepPurple,
-              onPressed: _startCountDown,
-              child: const Text(
-                'S T A R T',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              const SizedBox(
+                height: 5,
               ),
+              const Text('Time to focus!'),
+            ],
+          ),
+        */
+          CircularPercentIndicator(
+            radius: 60.0,
+            animation: true,
+            animationDuration: 50000,
+            lineWidth: 5.0,
+            percent: 0.4,
+            center: Text(
+              tl == 0 ? 'DONE' : tl.toString(),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                MaterialButton(
-                  color: Colors.red,
-                  onPressed: () {
-                    _pauseCountDown();
-                  },
-                  child: const Text(
-                    'P A U S E',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
-                MaterialButton(
-                  color: Colors.blue,
-                  onPressed: () {
-                    _resumeCountDown();
-                  },
-                  child: const Text(
-                    'R E S U M E',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
-              ],
+            circularStrokeCap: CircularStrokeCap.butt,
+            backgroundColor: Colors.grey,
+            progressColor: Colors.green,
+          ),
+          MaterialButton(
+            color: Colors.deepPurple,
+            onPressed: _startCountDown,
+            child: const Text(
+              'S T A R T',
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-          ],
-        ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              MaterialButton(
+                color: Colors.red,
+                onPressed: () {
+                  _pauseCountDown();
+                },
+                child: const Text(
+                  'P A U S E',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              MaterialButton(
+                color: Colors.blue,
+                onPressed: () {
+                  _resumeCountDown();
+                },
+                child: const Text(
+                  'R E S U M E',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 }
 
 
-
+// ahdaf    
 // ye navar mikham k ba time harkat kone o por she 
+// mikham har 3 min range navar sabz tar beshe 
+// stop - start - resume !!!
+//
