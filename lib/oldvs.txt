@@ -1,0 +1,306 @@
+/*import 'dart:async';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int tl = 5; // default value , tl : time left
+
+  final TextEditingController _tlcontroller = TextEditingController();
+
+  //timer method
+  void _startCountDown() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (tl > 0) {
+        setState(() {
+          tl--;
+        });
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextField(
+              controller: _tlcontroller,
+              keyboardType: TextInputType.number,
+              decoration:
+                  const InputDecoration(hintText: 'Enter Time (in seconds)'),
+            ),
+            Text(
+              tl == 0 ? "DONE" : tl.toString(),
+              style: const TextStyle(color: Colors.black, fontSize: 25),
+            ),
+            MaterialButton(
+              color: Colors.deepPurple,
+              onPressed: _startCountDown,
+              child: const Text(
+                'S T A R T',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+*/
+
+
+
+
+---------
+
+
+
+
+import 'dart:async';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int tl = 5; // default value , tl : time left
+
+  final TextEditingController _tlController = TextEditingController();
+
+  //timer method
+  void _startCountDown() {
+    // دریافت مقدار از TextField به جای متغیر tl
+    int inputTime = int.tryParse(_tlController.text) ?? 0;
+
+    if (inputTime > 0) {
+      setState(() {
+        tl = inputTime;
+      });
+
+      Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (tl > 0) {
+          setState(() {
+            tl--;
+          });
+        } else {
+          timer.cancel();
+        }
+      });
+    }
+  }
+
+  void _pauseCountDown() {
+    setState(() {
+      timer.cancel();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextField(
+              controller: _tlController,
+              keyboardType: TextInputType.number,
+              decoration:
+                  const InputDecoration(hintText: 'Enter Time (in seconds)'),
+            ),
+            Text(
+              tl == 0 ? "DONE" : tl.toString(),
+              style: const TextStyle(color: Colors.black, fontSize: 25),
+            ),
+            MaterialButton(
+              color: Colors.deepPurple,
+              onPressed: _startCountDown,
+              child: const Text(
+                'S T A R T',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+            MaterialButton(
+              color: Colors.red,
+              onPressed: () {_pauseCountDown();},
+              child: const Text(
+                'P A U S E',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+------
+
+
+
+import 'dart:async';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int tl = 1; // default value, tl: time left
+
+  final TextEditingController _tlController = TextEditingController();
+
+  Timer? timer;
+
+  //timer method
+  void _startCountDown() {
+    // Get value from TextField instead of tl variable
+    int inputTime = int.tryParse(_tlController.text) ?? 0;
+
+    if (inputTime > 0) {
+      setState(() {
+        tl = inputTime;
+      });
+
+      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (tl > 0) {
+          setState(() {
+            tl--;
+          });
+        } else {
+          timer.cancel();
+        }
+      });
+    }
+  }
+
+  void _pauseCountDown() {
+    if (timer != null && timer!.isActive) {
+      setState(() {
+        timer!.cancel();
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextField(
+              controller: _tlController,
+              keyboardType: TextInputType.number,
+              decoration:
+                  const InputDecoration(hintText: 'Enter Time (in seconds)'),
+            ),
+            Text(
+              tl == 0 ? "DONE" : tl.toString(),
+              style: const TextStyle(color: Colors.black, fontSize: 25),
+            ),
+            MaterialButton(
+              color: Colors.deepPurple,
+              onPressed: _startCountDown,
+              child: const Text(
+                'S T A R T',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+            MaterialButton(
+              color: Colors.red,
+              onPressed: _pauseCountDown,
+              child: const Text(
+                'P A U S E',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
