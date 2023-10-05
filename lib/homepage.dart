@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -72,21 +72,39 @@ class _HomePageState extends State<HomePage> {
                 hintText: 'Enter Time (in seconds)',
               ),
             ),
-            Text(
-              tl == 0 ? 'DONE' : tl.toString(),
-              style: const TextStyle(color: Colors.black, fontSize: 25),
+            Column(
+              children: [
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey,
+                  ),
+                  child: Center(
+                    child: Text(
+                      tl == 0 ? 'DONE' : tl.toString(),
+                      style: const TextStyle(color: Colors.black, fontSize: 40),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text('Time to focus!'),
+              ],
+            ),
+            MaterialButton(
+              color: Colors.deepPurple,
+              onPressed: _startCountDown,
+              child: const Text(
+                'S T A R T',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                MaterialButton(
-                  color: Colors.deepPurple,
-                  onPressed: _startCountDown,
-                  child: const Text(
-                    'S T A R T',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ),
                 MaterialButton(
                   color: Colors.red,
                   onPressed: () {
@@ -115,3 +133,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+
+// ye navar mikham k ba time harkat kone o por she 
