@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -11,146 +10,123 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int initialTime = 0;
   int tl = 10; // time left
-  late Timer timer;
-
-  final TextEditingController _tlController = TextEditingController();
-
+  bool animationkey = false;
   void _startCountDown() {
-    int inputTime = int.tryParse(_tlController.text) ?? 0;
-
-    if (inputTime > 0) {
-      setState(() {
-        initialTime = inputTime;
-        tl = inputTime;
-      });
-
-      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (tl > 0) {
-          setState(() {
-            tl--;
-          });
-        } else {
-          timer.cancel();
-        }
-      });
-    }
-  }
-
-  void _pauseCountDown() {
-    if (timer.isActive) {
-      timer.cancel();
-    }
-  }
-
-  void _resumeCountDown() {
-    if (tl > 0) {
-      timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-        if (tl > 0) {
-          setState(() {
-            tl--;
-          });
-        } else {
-          timer.cancel();
-        }
-      });
-    }
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (tl > 0) {
+        setState(() {
+          animationkey = !animationkey;
+          tl--;
+        });
+      } else {
+        timer.cancel();
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.red.shade700,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          TextField(
-            controller: _tlController,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              hintText: 'Enter Time (in seconds)',
-            ),
-          ),
-          /*     Column(
-            children: [
-              Container(
-                width: 120,
-                height: 120,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.grey,
-                ),
-                child: Center(
-                  child: Text(
-                    tl == 0 ? 'DONE' : tl.toString(),
-                    style: const TextStyle(color: Colors.black, fontSize: 40),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text('Time to focus!'),
-            ],
-          ),
-        */
-          CircularPercentIndicator(
-            radius: 60.0,
-            animation: true,
-            animationDuration: 50000,
-            lineWidth: 5.0,
-            percent: 0.4,
-            center: Text(
-              tl == 0 ? 'DONE' : tl.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
-            circularStrokeCap: CircularStrokeCap.butt,
-            backgroundColor: Colors.grey,
-            progressColor: Colors.green,
-          ),
-          MaterialButton(
-            color: Colors.deepPurple,
-            onPressed: _startCountDown,
-            child: const Text(
-              'S T A R T',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ),
-          Row(
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              MaterialButton(
-                color: Colors.red,
-                onPressed: () {
-                  _pauseCountDown();
-                },
-                child: const Text(
-                  'P A U S E',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+              CircularPercentIndicator(
+                radius: 60.0,
+                animation: true,
+                animationDuration: tl * 10000,
+                lineWidth: 5.0,
+                percent: 1,
+                center: Text(
+                  tl == 0 ? 'DONE' : tl.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
+                circularStrokeCap: CircularStrokeCap.round,
+                backgroundColor: Colors.grey,
+                progressColor: Colors.green.shade800,
               ),
               MaterialButton(
-                color: Colors.blue,
-                onPressed: () {
-                  _resumeCountDown();
-                },
+                color: Colors.deepPurple,
+                onPressed: _startCountDown,
                 child: const Text(
-                  'R E S U M E',
+                  'S T A R T',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
-
-// ahdaf    
-// ye navar mikham k ba time harkat kone o por she 
-// mikham har 3 min range navar sabz tar beshe 
+// ahdaf
+// ye navar mikham k ba time harkat kone o por she
+// mikham har 3 min range navar sabz tar beshe
 // stop - start - resume !!!
 //
+/*
+class TimerWidget extends StatefulWidget {
+  const TimerWidget({Key? key}) : super(key: key);
+
+  @override
+  _TimerWidgetState createState() => _TimerWidgetState();
+}
+
+class _TimerWidgetState extends State<TimerWidget> {
+  int timerDurationInMinutes = 25;
+  late Timer timer;
+  bool isTimerRunning = false;
+
+  void startTimer() {
+    timer = Timer.periodic(const Duration(minutes: 1), (timer) {
+      if (timerDurationInMinutes > 0) {
+        setState(() {
+          timerDurationInMinutes--;
+        });
+      } else {
+        timer.cancel();
+        setState(() {
+          isTimerRunning = false;
+        });
+        // Optional: You can perform additional actions when the timer completes.
+        // For example, show a notification or play a sound.
+        // Do something here...
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '${timerDurationInMinutes.toString().padLeft(2, '0')}:00',
+          style: const TextStyle(fontSize: 40),
+        ),
+        SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: () {
+            if (!isTimerRunning) {
+              setState(() {
+                timerDurationInMinutes = 25;
+                isTimerRunning = true;
+              });
+              startTimer();
+            }
+          },
+          child: const Text('Start Timer'),
+        ),
+      ],
+    );
+  }
+}
+*/

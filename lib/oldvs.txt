@@ -445,3 +445,71 @@ class _HomePageState extends State<HomePage> {
 
 
 // ye navar mikham k ba time harkat kone o por she 
+
+
+
+--------------
+
+
+
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:quiver/async.dart'; // برای استفاده از CountdownTimer
+
+class TimerWidget extends StatefulWidget {
+  const TimerWidget({Key? key}) : super(key: key);
+
+  @override
+  _TimerWidgetState createState() => _TimerWidgetState();
+}
+
+class _TimerWidgetState extends State<TimerWidget> {
+  int timerDurationInMinutes = 25;
+  bool isTimerRunning = false;
+  late CountdownTimer countdownTimer;
+
+  void startTimer() {
+    countdownTimer = CountdownTimer(
+      const Duration(seconds: 1500), // معادل 25 دقیقه
+      const Duration(seconds: 1),
+    );
+
+    countdownTimer.listen((duration) {
+      setState(() {
+        timerDurationInMinutes = duration.inMinutes;
+      });
+    },
+        onDone: () {
+      // انجام عملیات پس از اتمام تایمر
+      setState(() {
+        isTimerRunning = false;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '${timerDurationInMinutes.toString().padLeft(2, '0')}:${(countdownTimer.remaining.inSeconds % 60).toString().padLeft(2, '0')}',
+          style: const TextStyle(fontSize: 40),
+        ),
+        SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: () {
+            if (!isTimerRunning) {
+              setState(() {
+                timerDurationInMinutes = 25;
+                isTimerRunning = true;
+              });
+              startTimer();
+            }
+          },
+          child: const Text('Start Timer'),
+        ),
+      ],
+    );
+  }
+}
