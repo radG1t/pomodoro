@@ -1,9 +1,13 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -57,6 +61,28 @@ class _HomePageState extends State<HomePage> {
                 child: const Text(
                   'S T A R T',
                   style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              Container(
+                color: const Color.fromARGB(80, 158, 158, 158),
+                child: TimerCountdown(
+                  colonsTextStyle: TextStyle(color: Colors.white),
+                  timeTextStyle: TextStyle(color: Colors.white),
+                  descriptionTextStyle: TextStyle(color: Colors.white),
+                  enableDescriptions: true,
+                  spacerWidth: 5,
+                  format: CountDownTimerFormat.minutesSeconds,
+                  endTime: DateTime.now().add(
+                    const Duration(
+                      // days: 0,
+                      // hours: 0,
+                      minutes: 25,
+                      seconds: 0,
+                    ),
+                  ),
+                  onEnd: () {
+                    print("Timer finished");
+                  },
                 ),
               ),
             ],
@@ -130,3 +156,4 @@ class _TimerWidgetState extends State<TimerWidget> {
   }
 }
 */
+//timer asli mostatil e 
