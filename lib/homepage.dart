@@ -14,8 +14,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int tl = 10; // time left
+  /*
+  int tl = 10;
   bool animationkey = false;
+
   void _startCountDown() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
       if (tl > 0) {
@@ -28,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       }
     });
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,48 +43,50 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircularPercentIndicator(
-                radius: 60.0,
+                radius: 105,
                 animation: true,
-                animationDuration: tl * 10000,
+                animationDuration: 1500000,
                 lineWidth: 5.0,
                 percent: 1,
-                center: Text(
-                  tl == 0 ? 'DONE' : tl.toString(),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20.0),
-                ),
                 circularStrokeCap: CircularStrokeCap.round,
                 backgroundColor: Colors.grey,
                 progressColor: Colors.green.shade800,
+                center: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(150), //55 ?
+                    color: const Color.fromARGB(80, 158, 158, 158),
+                  ),
+                  height: 285,
+                  width: 285,
+                  child: Center(
+                    child: TimerCountdown(
+                      colonsTextStyle: const TextStyle(color: Colors.white),
+                      timeTextStyle: const TextStyle(color: Colors.white),
+                      descriptionTextStyle:
+                          const TextStyle(color: Colors.white),
+                      enableDescriptions: true,
+                      spacerWidth: 5,
+                      format: CountDownTimerFormat.minutesSeconds,
+                      endTime: DateTime.now().add(
+                        const Duration(
+                          minutes: 25,
+                          seconds: 0,
+                        ),
+                      ),
+                      onEnd: () {
+                        //page route kire khar to brake page
+                      },
+                    ),
+                  ),
+                ),
               ),
               MaterialButton(
                 color: Colors.deepPurple,
-                onPressed: _startCountDown,
+                onPressed: () {},
+                //_startCountDown,
                 child: const Text(
                   'S T A R T',
                   style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-              ),
-              Container(
-                color: const Color.fromARGB(80, 158, 158, 158),
-                child: TimerCountdown(
-                  colonsTextStyle: TextStyle(color: Colors.white),
-                  timeTextStyle: TextStyle(color: Colors.white),
-                  descriptionTextStyle: TextStyle(color: Colors.white),
-                  enableDescriptions: true,
-                  spacerWidth: 5,
-                  format: CountDownTimerFormat.minutesSeconds,
-                  endTime: DateTime.now().add(
-                    const Duration(
-                      // days: 0,
-                      // hours: 0,
-                      minutes: 25,
-                      seconds: 0,
-                    ),
-                  ),
-                  onEnd: () {
-                    print("Timer finished");
-                  },
                 ),
               ),
             ],
@@ -98,62 +102,3 @@ class _HomePageState extends State<HomePage> {
 // mikham har 3 min range navar sabz tar beshe
 // stop - start - resume !!!
 //
-/*
-class TimerWidget extends StatefulWidget {
-  const TimerWidget({Key? key}) : super(key: key);
-
-  @override
-  _TimerWidgetState createState() => _TimerWidgetState();
-}
-
-class _TimerWidgetState extends State<TimerWidget> {
-  int timerDurationInMinutes = 25;
-  late Timer timer;
-  bool isTimerRunning = false;
-
-  void startTimer() {
-    timer = Timer.periodic(const Duration(minutes: 1), (timer) {
-      if (timerDurationInMinutes > 0) {
-        setState(() {
-          timerDurationInMinutes--;
-        });
-      } else {
-        timer.cancel();
-        setState(() {
-          isTimerRunning = false;
-        });
-        // Optional: You can perform additional actions when the timer completes.
-        // For example, show a notification or play a sound.
-        // Do something here...
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          '${timerDurationInMinutes.toString().padLeft(2, '0')}:00',
-          style: const TextStyle(fontSize: 40),
-        ),
-        SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {
-            if (!isTimerRunning) {
-              setState(() {
-                timerDurationInMinutes = 25;
-                isTimerRunning = true;
-              });
-              startTimer();
-            }
-          },
-          child: const Text('Start Timer'),
-        ),
-      ],
-    );
-  }
-}
-*/
-//timer asli mostatil e 
