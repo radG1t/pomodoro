@@ -14,11 +14,11 @@ class _BreakPageState extends State<BreakPage> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double boxHeight = screenHeight * 0.03;
+    double boxHeight = screenHeight * 0.1;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.greenAccent,
+          backgroundColor: const Color.fromARGB(255, 37, 97, 68),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -27,14 +27,17 @@ class _BreakPageState extends State<BreakPage> {
             ],
           ),
         ),
-        backgroundColor: Colors.greenAccent.shade200,
+        backgroundColor: const Color.fromARGB(255, 37, 97, 68),
         body: Padding(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 36),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                SizedBox(
+                  height: boxHeight,
+                ),
                 CircularPercentIndicator(
                   radius: 105,
                   animation: true,
@@ -53,10 +56,12 @@ class _BreakPageState extends State<BreakPage> {
                     width: 285,
                     child: Center(
                       child: TimerCountdown(
-                        colonsTextStyle: const TextStyle(color: Colors.white),
-                        timeTextStyle: const TextStyle(color: Colors.white),
+                        colonsTextStyle:
+                            const TextStyle(color: Colors.white, fontSize: 20),
+                        timeTextStyle:
+                            const TextStyle(color: Colors.white, fontSize: 32),
                         descriptionTextStyle:
-                            const TextStyle(color: Colors.white),
+                            const TextStyle(color: Colors.white, fontSize: 12),
                         enableDescriptions: true,
                         spacerWidth: 5,
                         format: CountDownTimerFormat.minutesSeconds,
@@ -75,24 +80,50 @@ class _BreakPageState extends State<BreakPage> {
                   ),
                 ),
                 SizedBox(
-                  height: boxHeight,
+                  height: boxHeight * 0.4,
                 ),
-                Text(
-                  'Time for a break!',
-                  style: TextStyle(color: Colors.white70),
+                const Text(
+                  'Rest',
+                  style: TextStyle(color: Colors.white, fontSize: 42),
                 ),
                 SizedBox(
-                  height: boxHeight,
+                  height: boxHeight * 0.2,
                 ),
-                MaterialButton(
-                  color: Colors.deepPurple,
-                  onPressed: () {
-                    //          playSound();
-                  },
-                  //_startCountDown,
-                  child: const Text(
-                    'S T A R T',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: MaterialButton(
+                    color: Colors.white,
+                    onPressed: () {
+                      //          playSound();
+                    },
+                    //_startCountDown,
+                    child: const Text(
+                      'S T A R T',
+                      style: TextStyle(color: Colors.green, fontSize: 20),
+                    ),
+                  ),
+                ),
+                const Expanded(
+                  child: SizedBox(),
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white38,
+                      // shape: BorderRadius.all(radius),
+                      border: Border.all(color: Colors.black12),
+                      //           color: Colors.white54,
+                    ),
+                    child: const TextField(
+                      autofillHints: Characters.empty,
+                      decoration: InputDecoration(
+                        labelText: ' any note ?',
+                        border: InputBorder.none,
+                      ),
+                      maxLines: null,
+                      maxLength: 300,
+                    ),
                   ),
                 ),
               ],

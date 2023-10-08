@@ -62,6 +62,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              const Text(
+                'Time to foucos!',
+                style: TextStyle(color: Colors.white70),
+              ),
               MaterialButton(
                 color: Colors.deepPurple,
                 onPressed: () {
