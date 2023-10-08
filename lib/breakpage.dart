@@ -23,7 +23,13 @@ class _BreakPageState extends State<BreakPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text('Kire k h a r'),
-              IconButton(onPressed: () {}, icon: Icon(Icons.settings))
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.format_list_numbered_sharp,
+                    size: 28,
+                    color: Colors.white70,
+                  ))
             ],
           ),
         ),
@@ -87,6 +93,14 @@ class _BreakPageState extends State<BreakPage> {
                   style: TextStyle(color: Colors.white, fontSize: 42),
                 ),
                 SizedBox(
+                  height: 5,
+                ),
+                const Icon(
+                  Icons.local_florist,
+                  size: 56,
+                  color: Colors.white54,
+                ),
+                SizedBox(
                   height: boxHeight * 0.2,
                 ),
                 ClipRRect(
@@ -106,23 +120,33 @@ class _BreakPageState extends State<BreakPage> {
                 const Expanded(
                   child: SizedBox(),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white38,
-                      // shape: BorderRadius.all(radius),
-                      border: Border.all(color: Colors.black12),
-                      //           color: Colors.white54,
-                    ),
-                    child: const TextField(
-                      autofillHints: Characters.empty,
-                      decoration: InputDecoration(
-                        labelText: ' any note ?',
-                        border: InputBorder.none,
+                Expanded(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white38,
+                        // shape: BorderRadius.all(radius),
+                        border: Border.all(color: Colors.black12),
+                        //           color: Colors.white54,
                       ),
-                      maxLines: null,
-                      maxLength: 300,
+                      child: const TextField(
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                        showCursor: true,
+                        cursorColor: Color.fromARGB(115, 75, 70, 70),
+                        cursorRadius: Radius.circular(12),
+                        cursorHeight: 18,
+                        autofillHints: Characters.empty,
+                        decoration: InputDecoration(
+                          labelText: ' any note :',
+                          labelStyle: TextStyle(color: Colors.black38),
+                          border: InputBorder.none,
+                        ),
+                        maxLines: null,
+                        maxLength: 300,
+                      ),
                     ),
                   ),
                 ),
