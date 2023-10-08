@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
@@ -14,23 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  /*
-  int tl = 10;
-  bool animationkey = false;
-
-  void _startCountDown() {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (tl > 0) {
-        setState(() {
-          animationkey = !animationkey;
-          tl--;
-        });
-      } else {
-        timer.cancel();
-      }
-    });
-  }
-*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +55,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       onEnd: () {
+                        //    playSound();
                         //page route kire khar to brake page
                       },
                     ),
@@ -82,7 +64,9 @@ class _HomePageState extends State<HomePage> {
               ),
               MaterialButton(
                 color: Colors.deepPurple,
-                onPressed: () {},
+                onPressed: () {
+                  //          playSound();
+                },
                 //_startCountDown,
                 child: const Text(
                   'S T A R T',
@@ -101,4 +85,5 @@ class _HomePageState extends State<HomePage> {
 // ye navar mikham k ba time harkat kone o por she
 // mikham har 3 min range navar sabz tar beshe
 // stop - start - resume !!!
-//
+// objects page
+// focus page | break page | obj.dart | main.dart
