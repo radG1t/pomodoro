@@ -1,8 +1,9 @@
 //breakpage
+import 'dart:math';
+import 'package:pomodoro/obj.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'dart:math';
 
 class FocusPage extends StatefulWidget {
   const FocusPage({super.key});
@@ -13,12 +14,11 @@ class FocusPage extends StatefulWidget {
 
 String getRandomSentence() {
   List<String> sentences = [
-    'Rest your mind, refresh your focus',
-    'Get rest',
-    'Take a deep breath',
-    'Relax and recharge!',
-    'Give yourself a break,You deserve it;)',
-    'Disconnect and recharge',
+    'Stay focused',
+    'make it happen!',
+    'Dream big, work hard',
+    'Every small step counts',
+    'Keep moving forward.'
   ];
   Random random = Random();
   int index = random.nextInt(sentences.length);
@@ -65,15 +65,15 @@ class _FocusPageState extends State<FocusPage> {
                 CircularPercentIndicator(
                   radius: 105,
                   animation: true,
-                  animationDuration: 300000,
-                  lineWidth: 5.0,
+                  animationDuration: 15000, //00000,
+                  lineWidth: 6.0,
                   percent: 1,
                   circularStrokeCap: CircularStrokeCap.round,
-                  backgroundColor: Colors.green.shade800,
-                  progressColor: Colors.white30,
+                  backgroundColor: Colors.white60,
+                  progressColor: const Color.fromARGB(255, 177, 3, 3),
                   center: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(150), //55 ?
+                      borderRadius: BorderRadius.circular(120), //55 or 120 ?
                       color: const Color.fromARGB(80, 158, 158, 158),
                     ),
                     height: 285,
@@ -114,8 +114,8 @@ class _FocusPageState extends State<FocusPage> {
                   height: boxHeight * 0.4,
                 ),
                 const Icon(
-                  Icons.local_florist,
-                  size: 56,
+                  Icons.laptop_windows_sharp,
+                  size: 46,
                   color: Colors.white54,
                 ),
                 SizedBox(
@@ -130,8 +130,8 @@ class _FocusPageState extends State<FocusPage> {
                     },
                     //_startCountDown,
                     child: const Text(
-                      'SKIP break',
-                      style: TextStyle(color: Colors.green, fontSize: 20),
+                      'S T A R T',
+                      style: TextStyle(color: Colors.red, fontSize: 20),
                     ),
                   ),
                 ),
@@ -177,3 +177,5 @@ class _FocusPageState extends State<FocusPage> {
   }
 }
 //hide counter 
+
+//master your minute, master your life
