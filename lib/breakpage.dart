@@ -2,12 +2,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'dart:math';
 
 class BreakPage extends StatefulWidget {
   const BreakPage({super.key});
 
   @override
   State<BreakPage> createState() => _BreakPageState();
+}
+
+String getRandomSentence() {
+  List<String> sentences = [
+    'Rest your mind, refresh your focus',
+    'Get rest',
+    'Take a deep breath',
+    'Relax and recharge!',
+    'Give yourself a break,You deserve it;)',
+    'Disconnect and recharge',
+  ];
+  Random random = Random();
+  int index = random.nextInt(sentences.length);
+  return sentences[index];
 }
 
 class _BreakPageState extends State<BreakPage> {
@@ -22,10 +37,13 @@ class _BreakPageState extends State<BreakPage> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Kire k h a r'),
+              const Text(
+                'Pomodoro',
+                style: TextStyle(fontSize: 22, color: Colors.white54),
+              ),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.format_list_numbered_sharp,
                     size: 28,
                     color: Colors.white70,
@@ -88,12 +106,12 @@ class _BreakPageState extends State<BreakPage> {
                 SizedBox(
                   height: boxHeight * 0.4,
                 ),
-                const Text(
-                  'Rest',
-                  style: TextStyle(color: Colors.white, fontSize: 42),
+                Text(
+                  getRandomSentence(),
+                  style: const TextStyle(color: Colors.white, fontSize: 24),
                 ),
                 SizedBox(
-                  height: 5,
+                  height: boxHeight * 0.4,
                 ),
                 const Icon(
                   Icons.local_florist,
@@ -112,7 +130,7 @@ class _BreakPageState extends State<BreakPage> {
                     },
                     //_startCountDown,
                     child: const Text(
-                      'S T A R T',
+                      'SKIP break',
                       style: TextStyle(color: Colors.green, fontSize: 20),
                     ),
                   ),
@@ -158,3 +176,4 @@ class _BreakPageState extends State<BreakPage> {
     );
   }
 }
+//hide counter 
