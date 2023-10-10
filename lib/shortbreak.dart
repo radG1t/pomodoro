@@ -4,11 +4,13 @@ import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'dart:math';
 
-class BreakPage extends StatefulWidget {
-  const BreakPage({super.key});
+import 'package:pomodoro/work.dart';
+
+class ShortBreak extends StatefulWidget {
+  const ShortBreak({super.key});
 
   @override
-  State<BreakPage> createState() => _BreakPageState();
+  State<ShortBreak> createState() => _ShortBreakState();
 }
 
 String getRandomSentence() {
@@ -25,7 +27,7 @@ String getRandomSentence() {
   return sentences[index];
 }
 
-class _BreakPageState extends State<BreakPage> {
+class _ShortBreakState extends State<ShortBreak> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -126,6 +128,12 @@ class _BreakPageState extends State<BreakPage> {
                   child: MaterialButton(
                     color: Colors.white,
                     onPressed: () {
+                      Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                            //CupertinoButton( ?
+                            builder: (context) => const FocusPage()),
+                      );
                       //          playSound();
                     },
                     //_startCountDown,

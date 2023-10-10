@@ -4,6 +4,7 @@ import 'package:pomodoro/obj.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pomodoro/shortbreak.dart';
 
 class FocusPage extends StatefulWidget {
   const FocusPage({super.key});
@@ -104,6 +105,13 @@ class _FocusPageState extends State<FocusPage> {
                           ),
                         ),
                         onEnd: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                //CupertinoButton( ?
+                                builder: (context) => const ShortBreak()),
+                          );
+
                           //    playSound();
                           //page route kire khar to brake page
                         },
@@ -134,6 +142,12 @@ class _FocusPageState extends State<FocusPage> {
                   child: MaterialButton(
                     color: Colors.white,
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            //CupertinoButton( ?
+                            builder: (context) => const ShortBreak()),
+                      );
                       //          playSound();
                     },
                     //_startCountDown,
@@ -163,7 +177,6 @@ class _FocusPageState extends State<FocusPage> {
                         showCursor: true,
                         cursorColor: Color.fromARGB(115, 75, 70, 70),
                         cursorRadius: Radius.circular(12),
-                        cursorHeight: 18,
                         autofillHints: Characters.empty,
                         decoration: InputDecoration(
                           prefixText: '   ',
@@ -171,11 +184,12 @@ class _FocusPageState extends State<FocusPage> {
                           //     fontSize: 11,
                           //     color: Colors.black38,
                           //     fontStyle: FontStyle.italic),
-                          counter: Text(
-                            '~ 300  ',
-                            style:
-                                TextStyle(fontSize: 9, color: Colors.black38),
-                          ),
+
+                          // counter: Text(
+                          //   '~ 300  ',
+                          //   style:
+                          //       TextStyle(fontSize: 9, color: Colors.black38),
+                          // ),
                           labelText: ' any note :',
                           labelStyle: TextStyle(color: Colors.black38),
                           border: InputBorder.none,
