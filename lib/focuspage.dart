@@ -135,8 +135,8 @@ class _FocusPageState extends State<FocusPage> {
                     ),
                   ),
                 ),
-                const Expanded(
-                  child: SizedBox(),
+                SizedBox(
+                  height: boxHeight * 0.4,
                 ),
                 Expanded(
                   child: ClipRRect(
@@ -150,7 +150,7 @@ class _FocusPageState extends State<FocusPage> {
                       ),
                       child: const TextField(
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 14,
                         ),
                         showCursor: true,
                         cursorColor: Color.fromARGB(115, 75, 70, 70),
@@ -158,6 +158,16 @@ class _FocusPageState extends State<FocusPage> {
                         cursorHeight: 18,
                         autofillHints: Characters.empty,
                         decoration: InputDecoration(
+                          // prefixText: 'any note :',
+                          // prefixStyle: TextStyle(
+                          //     fontSize: 11,
+                          //     color: Colors.black38,
+                          //     fontStyle: FontStyle.italic),
+                          counter: Text(
+                            '~ 300  ',
+                            style:
+                                TextStyle(fontSize: 9, color: Colors.black38),
+                          ),
                           labelText: ' any note :',
                           labelStyle: TextStyle(color: Colors.black38),
                           border: InputBorder.none,
