@@ -44,3 +44,25 @@ void timerbox(int du, Color backgroundColor, Color forgroundColor) {
     ),
   );
 }
+// void vloumeIcon(){
+//   bool isIconChanged = false;
+//   void _toggleIcon() {
+//     setState(() {
+//       isIconChanged = !isIconChanged;
+//     });
+//   }
+
+//      const SizedBox(
+//                   height: 5,
+//                 ),
+//                 Align(
+//                   alignment: Alignment.centerLeft,
+//                   child: IconButton(
+//                       onPressed: () {
+//                         _toggleIcon();
+//                       },
+//                       icon: Icon(isIconChanged
+//                           ? Icons.volume_off_outlined
+//                           : Icons.volume_up_outlined)),
+//                 ),
+// }

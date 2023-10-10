@@ -25,7 +25,15 @@ String getRandomSentence() {
   return sentences[index];
 }
 
+bool isIconChanged = false;
+
 class _FocusPageState extends State<FocusPage> {
+  void _toggleIcon() {
+    setState(() {
+      isIconChanged = !isIconChanged;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -53,7 +61,7 @@ class _FocusPageState extends State<FocusPage> {
         ),
         backgroundColor: const Color.fromARGB(255, 206, 56, 45),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 12, 12, 36),
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 24),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -158,7 +166,7 @@ class _FocusPageState extends State<FocusPage> {
                         cursorHeight: 18,
                         autofillHints: Characters.empty,
                         decoration: InputDecoration(
-                          // prefixText: 'any note :',
+                          prefixText: '   ',
                           // prefixStyle: TextStyle(
                           //     fontSize: 11,
                           //     color: Colors.black38,
@@ -177,6 +185,19 @@ class _FocusPageState extends State<FocusPage> {
                       ),
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                      onPressed: () {
+                        _toggleIcon();
+                      },
+                      icon: Icon(isIconChanged
+                          ? Icons.volume_off_outlined
+                          : Icons.volume_up_outlined)),
                 ),
               ],
             ),
