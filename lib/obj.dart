@@ -7,7 +7,7 @@ void timerbox(int du, Color backgroundColor, Color forgroundColor) {
   CircularPercentIndicator(
     radius: 105,
     animation: true,
-    animationDuration: du, //00000,
+    animationDuration: du * 60000,
     lineWidth: 6.0,
     percent: 1,
     circularStrokeCap: CircularStrokeCap.round,

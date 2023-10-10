@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro/breakpage.dart';
-import 'package:pomodoro/focuspage.dart';
+import 'package:pomodoro/shortbreak.dart';
+import 'package:pomodoro/work.dart';
+import 'package:pomodoro/longbreak.dart';
 
 void main() {
   runApp(const MyApp());
