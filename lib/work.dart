@@ -74,7 +74,7 @@ class _FocusPageState extends State<FocusPage> {
                 CircularPercentIndicator(
                   radius: 105,
                   animation: true,
-                  animationDuration: 15000, //00000,
+                  animationDuration: 25 * 60 * 1000,
                   lineWidth: 6.0,
                   percent: 1,
                   circularStrokeCap: CircularStrokeCap.round,
@@ -162,40 +162,43 @@ class _FocusPageState extends State<FocusPage> {
                 ),
                 Expanded(
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white38,
-                        // shape: BorderRadius.all(radius),
-                        border: Border.all(color: Colors.black12),
-                        //           color: Colors.white54,
-                      ),
-                      child: const TextField(
-                        style: TextStyle(
-                          fontSize: 14,
+                    borderRadius: BorderRadius.circular(18),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white38,
+                          // shape: BorderRadius.all(radius),
+                          border: Border.all(color: Colors.black12),
+                          //           color: Colors.white54,
                         ),
-                        showCursor: true,
-                        cursorColor: Color.fromARGB(115, 75, 70, 70),
-                        cursorRadius: Radius.circular(12),
-                        autofillHints: Characters.empty,
-                        decoration: InputDecoration(
-                          prefixText: '   ',
-                          // prefixStyle: TextStyle(
-                          //     fontSize: 11,
-                          //     color: Colors.black38,
-                          //     fontStyle: FontStyle.italic),
+                        child: const TextField(
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                          showCursor: true,
+                          cursorColor: Color.fromARGB(115, 75, 70, 70),
+                          cursorRadius: Radius.circular(12),
+                          autofillHints: Characters.empty,
+                          decoration: InputDecoration(
+                            prefixText: '   ',
+                            // prefixStyle: TextStyle(
+                            //     fontSize: 11,
+                            //     color: Colors.black38,
+                            //     fontStyle: FontStyle.italic),
 
-                          // counter: Text(
-                          //   '~ 300  ',
-                          //   style:
-                          //       TextStyle(fontSize: 9, color: Colors.black38),
-                          // ),
-                          labelText: ' any note :',
-                          labelStyle: TextStyle(color: Colors.black38),
-                          border: InputBorder.none,
+                            counter: Text(
+                              '~ 100  ',
+                              style:
+                                  TextStyle(fontSize: 9, color: Colors.black38),
+                            ),
+                            labelText: ' any note :',
+                            labelStyle: TextStyle(color: Colors.black38),
+                            border: InputBorder.none,
+                          ),
+                          maxLines: null,
+                          maxLength: 100,
                         ),
-                        maxLines: null,
-                        maxLength: 300,
                       ),
                     ),
                   ),

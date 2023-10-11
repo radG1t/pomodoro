@@ -66,3 +66,15 @@ void timerbox(int du, Color backgroundColor, Color forgroundColor) {
 //                           : Icons.volume_up_outlined)),
 //                 ),
 // }
+
+class BottomNavigation extends StatelessWidget {
+  const BottomNavigation({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 85,
+      color: Colors.black,
+    );
+  }
+}

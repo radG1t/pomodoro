@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/obj.dart';
 import 'package:pomodoro/shortbreak.dart';
 import 'package:pomodoro/work.dart';
 import 'package:pomodoro/longbreak.dart';
@@ -21,7 +22,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black12),
         useMaterial3: true,
       ),
-      home: const FocusPage(),
+      home: Stack(children: [
+        Positioned.fill(child: const FocusPage()),
+        Positioned(
+          right: 0,
+          left: 0,
+          bottom: 0,
+          child: BottomNavigation(),
+        )
+      ]),
     );
   }
 }
