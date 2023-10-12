@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pomodoro/setting.dart';
+import 'package:pomodoro/shortbreak.dart';
 
 void timerbox(int du, Color backgroundColor, Color forgroundColor) {
   CircularPercentIndicator(
@@ -73,8 +75,65 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 85,
-      color: Colors.black,
+      height: 45,
+      color: const Color.fromRGBO(255, 255, 255, 1),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const BtmNvItems(
+              iconFileName: Icons.settings,
+              title: 'setting',
+            ),
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        //CupertinoButton( ?
+                        builder: (context) => const setting()),
+                  );
+                },
+                child: const BtmNvItems(
+                    iconFileName: Icons.timer_outlined, title: 'Foucos')),
+            const BtmNvItems(
+              iconFileName: Icons.abc,
+              title: 'setting',
+            ),
+            const BtmNvItems(iconFileName: Icons.abc, title: 'Foucos'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BtmNvItems extends StatelessWidget {
+  final IconData iconFileName;
+  //final String activeIconFileName;
+  final String title;
+
+  //final void ontap;
+  const BtmNvItems(
+      {super.key,
+      required this.iconFileName,
+      /*required this.activeIconFileName,*/ required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //   Icon('Icons.$iconFileName' as IconData?),
+        Icon(
+          iconFileName,
+        ),
+        Text(
+          title,
+          style: const TextStyle(
+              fontSize: 8, color: Colors.black, backgroundColor: Colors.white),
+        ),
+      ],
     );
   }
 }

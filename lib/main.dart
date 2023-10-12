@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black12),
         useMaterial3: true,
       ),
-      home: Stack(children: [
-        Positioned.fill(child: const FocusPage()),
+      home: const Stack(children: [
+        Positioned.fill(child: FocusPage()),
         Positioned(
           right: 0,
           left: 0,

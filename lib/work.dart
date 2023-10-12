@@ -1,6 +1,5 @@
-//breakpage
 import 'dart:math';
-import 'package:pomodoro/obj.dart';
+//import 'package:pomodoro/obj.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -164,7 +163,7 @@ class _FocusPageState extends State<FocusPage> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(18),
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(4, 0, 4, 0),
+                      padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white38,
