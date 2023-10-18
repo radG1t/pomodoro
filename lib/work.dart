@@ -80,11 +80,11 @@ class _FocusPageState extends State<FocusPage> {
                     child: Center(
                       child: TimerCountdown(
                         colonsTextStyle:
-                            const TextStyle(color: Colors.white, fontSize: 20),
+                            const TextStyle(color: Colors.white, fontSize: 42),
                         timeTextStyle:
-                            const TextStyle(color: Colors.white, fontSize: 32),
+                            const TextStyle(color: Colors.white, fontSize: 42),
                         descriptionTextStyle:
-                            const TextStyle(color: Colors.white, fontSize: 12),
+                            const TextStyle(color: Colors.white, fontSize: 18),
                         enableDescriptions: true,
                         spacerWidth: 5,
                         format: CountDownTimerFormat.minutesSeconds,
@@ -123,25 +123,148 @@ class _FocusPageState extends State<FocusPage> {
                 SizedBox(
                   height: boxHeight * 0.2,
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: MaterialButton(
-                    color: Colors.white,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            //CupertinoButton( ?
-                            builder: (context) => const ShortBreak()),
-                      );
-                      //          playSound();
-                    },
-                    //_startCountDown,
-                    child: const Text(
-                      'S T A R T',
-                      style: TextStyle(color: Colors.red, fontSize: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(45),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //CupertinoButton( ?
+                                  builder: (context) => const ShortBreak()),
+                            );
+                            //          playSound();
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(45),
+                            child: Container(
+                              height: 42,
+                              width: 42,
+                              color: Colors.white,
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(45),
+                                      child: Container(
+                                        height: 40,
+                                        width: 40,
+                                        color: Color.fromARGB(255, 206, 56, 45),
+                                      ),
+                                    ),
+                                  ),
+                                  const Center(
+                                    child: Text(
+                                      'Skip',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(45),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //CupertinoButton( ?
+                                  builder: (context) => const ShortBreak()),
+                            );
+                            //          playSound();
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(45),
+                            child: Container(
+                              height: 53,
+                              width: 53,
+                              color: Colors.white,
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(45),
+                                      child: Container(
+                                        height: 51,
+                                        width: 51,
+                                        color: Color.fromARGB(255, 206, 56, 45),
+                                      ),
+                                    ),
+                                  ),
+                                  const Center(
+                                    child: Text(
+                                      'Skip',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(45),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //CupertinoButton( ?
+                                  builder: (context) => const ShortBreak()),
+                            );
+                            //          playSound();
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(45),
+                            child: Container(
+                              height: 42,
+                              width: 42,
+                              color: Colors.white,
+                              child: Stack(
+                                children: [
+                                  Center(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(45),
+                                      child: Container(
+                                        height: 40,
+                                        width: 40,
+                                        color: Color.fromARGB(255, 206, 56, 45),
+                                      ),
+                                    ),
+                                  ),
+                                  const Center(
+                                    child: Text(
+                                      'Skip',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const Expanded(
                   child: SizedBox(),
