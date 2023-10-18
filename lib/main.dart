@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
       home: const Stack(children: [
         Positioned.fill(child: FocusPage()),
         Positioned(
-          right: 0,
-          left: 0,
-          bottom: 0,
+          right: 12,
+          left: 12,
+          bottom: 12,
           child: BottomNavigation(),
         )
       ]),

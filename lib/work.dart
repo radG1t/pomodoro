@@ -28,12 +28,12 @@ String getRandomSentence() {
 bool isIconChanged = false;
 
 class _FocusPageState extends State<FocusPage> {
-  void _toggleIcon() {
+  /* void _toggleIcon() {
     setState(() {
       isIconChanged = !isIconChanged;
     });
   }
-
+*/
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -42,26 +42,16 @@ class _FocusPageState extends State<FocusPage> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 206, 56, 45),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Pomodoro',
-                style: TextStyle(fontSize: 22, color: Colors.white54),
-              ),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.format_list_numbered_sharp,
-                    size: 28,
-                    color: Colors.white70,
-                  ))
-            ],
+          title: const Center(
+            child: Text(
+              'Pomodoro',
+              style: TextStyle(fontSize: 22, color: Colors.white54),
+            ),
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 206, 56, 45),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 12, 12, 24),
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 68),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -70,8 +60,9 @@ class _FocusPageState extends State<FocusPage> {
                 SizedBox(
                   height: boxHeight,
                 ),
+                //timerbox
                 CircularPercentIndicator(
-                  radius: 105,
+                  radius: 135,
                   animation: true,
                   animationDuration: 25 * 60 * 1000,
                   lineWidth: 6.0,
@@ -80,12 +71,12 @@ class _FocusPageState extends State<FocusPage> {
                   backgroundColor: Colors.white60,
                   progressColor: const Color.fromARGB(255, 177, 3, 3),
                   center: Container(
+                    height: 300,
+                    width: 300,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(120), //55 or 120 ?
+                      borderRadius: BorderRadius.circular(55), //55 or 120 ?
                       color: const Color.fromARGB(80, 158, 158, 158),
                     ),
-                    height: 285,
-                    width: 285,
                     child: Center(
                       child: TimerCountdown(
                         colonsTextStyle:
@@ -107,12 +98,8 @@ class _FocusPageState extends State<FocusPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                //CupertinoButton( ?
                                 builder: (context) => const ShortBreak()),
                           );
-
-                          //    playSound();
-                          //page route kire khar to brake page
                         },
                       ),
                     ),
@@ -156,10 +143,11 @@ class _FocusPageState extends State<FocusPage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: boxHeight * 0.4,
+                const Expanded(
+                  child: SizedBox(),
                 ),
-                Expanded(
+                Align(
+                  alignment: Alignment.bottomCenter,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(18),
                     child: Padding(
@@ -167,9 +155,7 @@ class _FocusPageState extends State<FocusPage> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white38,
-                          // shape: BorderRadius.all(radius),
                           border: Border.all(color: Colors.black12),
-                          //           color: Colors.white54,
                         ),
                         child: const TextField(
                           style: TextStyle(
@@ -181,18 +167,14 @@ class _FocusPageState extends State<FocusPage> {
                           autofillHints: Characters.empty,
                           decoration: InputDecoration(
                             prefixText: '   ',
-                            // prefixStyle: TextStyle(
-                            //     fontSize: 11,
-                            //     color: Colors.black38,
-                            //     fontStyle: FontStyle.italic),
-
                             counter: Text(
                               '~ 100  ',
                               style:
                                   TextStyle(fontSize: 9, color: Colors.black38),
                             ),
                             labelText: ' any note :',
-                            labelStyle: TextStyle(color: Colors.black38),
+                            labelStyle:
+                                TextStyle(color: Colors.black38, fontSize: 12),
                             border: InputBorder.none,
                           ),
                           maxLines: null,
@@ -202,10 +184,8 @@ class _FocusPageState extends State<FocusPage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Align(
+
+                /*    Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
                       onPressed: () {
@@ -215,6 +195,7 @@ class _FocusPageState extends State<FocusPage> {
                           ? Icons.volume_off_outlined
                           : Icons.volume_up_outlined)),
                 ),
+             */
               ],
             ),
           ),
@@ -223,6 +204,6 @@ class _FocusPageState extends State<FocusPage> {
     );
   }
 }
-//hide counter 
+//hide counter
 
 //master your minute, master your life

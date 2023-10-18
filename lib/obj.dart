@@ -74,35 +74,38 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 45,
-      color: const Color.fromRGBO(255, 255, 255, 1),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const BtmNvItems(
-              iconFileName: Icons.settings,
-              title: 'setting',
-            ),
-            GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        //CupertinoButton( ?
-                        builder: (context) => const setting()),
-                  );
-                },
-                child: const BtmNvItems(
-                    iconFileName: Icons.timer_outlined, title: 'Foucos')),
-            const BtmNvItems(
-              iconFileName: Icons.abc,
-              title: 'setting',
-            ),
-            const BtmNvItems(iconFileName: Icons.abc, title: 'Foucos'),
-          ],
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        height: 36,
+        color: const Color.fromRGBO(255, 255, 255, 1),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const BtmNvItems(
+                iconFileName: Icons.settings,
+                title: 'setting',
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          //CupertinoButton( ?
+                          builder: (context) => const setting()),
+                    );
+                  },
+                  child: const BtmNvItems(
+                      iconFileName: Icons.timer_outlined, title: 'Foucos')),
+              const BtmNvItems(
+                iconFileName: Icons.abc,
+                title: 'setting',
+              ),
+              const BtmNvItems(iconFileName: Icons.abc, title: 'Foucos'),
+            ],
+          ),
         ),
       ),
     );
