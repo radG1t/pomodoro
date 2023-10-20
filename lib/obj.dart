@@ -140,3 +140,51 @@ class BtmNvItems extends StatelessWidget {
     );
   }
 }
+
+/*
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final Color backgroundColor; // Add a custom color parameter
+
+  CustomAppBar({Key ? key,required this.backgroundColor})
+  @override
+
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  @override
+
+
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: backgroundColor, // Use the custom color here
+      automaticallyImplyLeading: false,
+      title: const Center(
+        child: Text(
+          'Pomodox',
+          style: TextStyle(fontSize: 22, color: Colors.white54),
+        ),
+      ),
+    );
+  }
+}
+*/
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  final Color backgroundColor; // Add a custom color parameter
+
+  CustomAppBar({Key? key, required this.backgroundColor}) : super(key: key);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: backgroundColor, // Use the custom color here
+      automaticallyImplyLeading: false,
+      title: const Center(
+        child: Text(
+          'Pomodox',
+          style: TextStyle(fontSize: 22, color: Colors.white54),
+        ),
+      ),
+    );
+  }
+}

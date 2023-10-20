@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pomodoro/obj.dart';
 import 'dart:math';
 
 import 'package:pomodoro/work.dart';
@@ -34,26 +35,10 @@ class _ShortBreakState extends State<ShortBreak> {
     double boxHeight = screenHeight * 0.1;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 37, 97, 68),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                'Pomodoro',
-                style: TextStyle(fontSize: 22, color: Colors.white54),
-              ),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.format_list_numbered_sharp,
-                    size: 28,
-                    color: Colors.white70,
-                  ))
-            ],
-          ),
-        ),
         backgroundColor: const Color.fromARGB(255, 37, 97, 68),
+        appBar: CustomAppBar(
+          backgroundColor: const Color.fromARGB(255, 37, 97, 68),
+        ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(12, 12, 12, 36),
           child: Center(

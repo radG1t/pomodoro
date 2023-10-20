@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pomodoro/obj.dart';
 import 'package:pomodoro/shortbreak.dart';
 
 class FocusPage extends StatefulWidget {
@@ -40,16 +41,10 @@ class _FocusPageState extends State<FocusPage> {
     double boxHeight = screenHeight * 0.1;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 206, 56, 45),
-          title: const Center(
-            child: Text(
-              'Pomodoro',
-              style: TextStyle(fontSize: 22, color: Colors.white54),
-            ),
-          ),
-        ),
         backgroundColor: const Color.fromARGB(255, 206, 56, 45),
+        appBar: CustomAppBar(
+          backgroundColor: const Color.fromARGB(255, 206, 56, 45),
+        ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(12, 12, 12, 68),
           child: Center(
@@ -307,18 +302,6 @@ class _FocusPageState extends State<FocusPage> {
                     ),
                   ),
                 ),
-
-                /*    Align(
-                  alignment: Alignment.centerLeft,
-                  child: IconButton(
-                      onPressed: () {
-                        _toggleIcon();
-                      },
-                      icon: Icon(isIconChanged
-                          ? Icons.volume_off_outlined
-                          : Icons.volume_up_outlined)),
-                ),
-             */
               ],
             ),
           ),
